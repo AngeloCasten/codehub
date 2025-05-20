@@ -1,2 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary  # necessário para PostgreSQL
+python-dotenv     # opcional, se quiser carregar variáveis locais
