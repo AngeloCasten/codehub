@@ -1,19 +1,14 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 from database import Base
 
-class Turma(Base):
-    __tablename__ = "turmas"
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String, unique=True, index=True)
-    alunos = relationship("Usuario", back_populates="turma")
-
-class Usuario(Base):
+class User(Base):
     __tablename__ = "usuarios"
     id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String, index=True)
+    nome = Column(String)
     email = Column(String, unique=True, index=True)
     senha = Column(String)
-    turma_id = Column(Integer, ForeignKey("turmas.id"))
 
-    turma = relationship("Turma", back_populates="alunos")
+class CodigoAluno(Base):
+    __tablename__ = "codigos"
+    id = Column(Integer, primary_key=True, index=True)
+    codigo = Column(String)

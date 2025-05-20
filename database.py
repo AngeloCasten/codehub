@@ -1,12 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import os
 
-# Pega a URL do banco de dados do ambiente do Render
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./test.db")
+DATABASE_URL = "postgresql://bd_codigos_alunos_user:OOVhRqH8vZFM5rl3QAyiAyLI7nqnSKWl@dpg-d0m9iv0gjchc739mea2g-a/bd_codigos_alunos"
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {})
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
